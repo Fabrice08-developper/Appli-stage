@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+</head>
+<style>
+    body{
+        background-image: url('images/refrigeration-7363620_1280.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .list-group-item{
+        width: 100%;
+        max-width: 1000px;
+        background-color: rgba(255, 255, 255, 0.8);
+        background-size: cover;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        font-size: 18px;
+    }
+    .list-group{
+        margin: 50px ;
+    }
+
+     .list-group-item {
+      transition: all 0.3s ease; /* Transition douce */
+      background-color: rgba(255, 255, 255, 0.1); /* Légère transparence */
+      color: #fff;
+      border: none;
+    }
+
+    .list-group-item:hover {
+      background-color: #0d6efd; /* Couleur de survol */
+      transform: translateX(5px); /* Glissement léger à droite */
+      box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4); /* Effet d’ombre */
+    }
+
+    body {
+      background-color: #212529; /* Fond sombre pour contraste */
+      padding: 17px;
+    }
+
+    .list-group {
+      max-width: 1250px;
+    }
+
+</style>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+
+            <a class="navbar-brand" href="#">ServExpert</a>
+            <img src="images/OIP-removebg-preview.png" alt="" style="width: 80px; height: auto;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link" href="page2.html"><i class="fa-solid fa-house"></i> Accueil</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="profil.html"><i class="fa-solid fa-user"></i> Profil</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="interventions.html"><i class="fa-solid fa-briefcase"></i> Mes interventions</a>
+                </li>
+                <li class="nav-item"> 
+                <a class="nav-link" href="conversation.html"><i class="fa-solid fa-envelope"></i> Messagerie</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="Login.html"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a> 
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" style="color: #2163b8;"><i class="fa-solid fa-circle-info"></i>Avis des clients</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div class="list-group">
+        <div class="list-group-item">
+            <strong>Jean X :</strong> Très professionnel et ponctuel ! ⭐⭐⭐⭐⭐
+        </div>
+        <div class="list-group-item">
+            <strong>Marie Y :</strong> Bon travail mais un peu de retard. ⭐⭐⭐☆☆
+        </div>
+        <div class="list-group-item">
+            <strong>Marie Y :</strong> Bon travail mais un peu de retard. ⭐☆☆☆☆
+        </div>
+        <div class="list-group-item">
+            <strong>Marie Y :</strong> Bon travail mais un peu de retard. ⭐⭐⭐⭐☆
+        </div>
+        <div class="list-group-item">
+            <strong>Paul Y :</strong> Bon travail mais un peu de retard. ⭐⭐⭐⭐☆
+        </div>
+        <div class="list-group-item">
+            <strong>Mathieu Y :</strong> Un souci sur le travail effectué. ⭐⭐☆☆☆
+        </div>
+        </div>
+    </div>
+    
+</body>
+    <script src="assets/js/utilities/popper.min.js"></script> 
+    <script src="assets/js/utilities/jquery-3.7.1.min.js"></script> 
+    <script src="assets/js/bootstrap/bootstrap.js"></script>
+</html>

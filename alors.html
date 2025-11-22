@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Composant de notation par étoiles</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+  <style>
+    /* Conteneur des étoiles */
+    .star-rating {
+      display: inline-flex;
+      gap: 0.25rem;
+      align-items: center;
+      user-select: none;
+      --star-size: 2rem;
+    }/* Masquer les inputs radio */
+.star-rating input { display: none; }
+
+/* Styles des labels (étoiles) */
+.star-rating label {
+  width: var(--star-size);
+  height: var(--star-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #e9ecef; /* gris clair par défaut */
+  transition: transform .12s ease, color .12s ease;
+}
+
+.star-rating label:hover {
+  transform: scale(1.06);
+}
+
+/* Couleur des étoiles quand un input est coché (sélection) */
+/* On utilise le sélecteur général suivant pour cocher la bonne étoile et toutes celles avant */
+.star-rating input:checked ~ label,
+.star-rating input:checked ~ label ~ label { color: #ffc107; }
+
+/* Effet hover — colorer l'étoile survolée et celles précédentes */
+.star-rating label:hover,
+.star-rating label:hover ~ label { color: #ffd54a; }
+
+/* Petite variante responsive */
+@media (max-width: 480px) {
+  .star-rating { --star-size: 1.6rem; }
+}
+
+/* Texte affichant la valeur */
+.rating-value {
+  margin-left: .75rem;
+  min-width: 3.2rem;
+  text-align: left;
+  font-weight: 600;
+}
+  .card{
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1000px;
+    }
+    body{
+        background-image: url('images/WhatsApp\ Image\ 2025-08-22\ at\ 21.25.46_91e5e87c.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        text-align: center;
+        padding-top: 10px;
+        font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="p-4 bg-light">
+  <div class="container">
+  <div class="card mt-3 p-3">
+    <div class="d-flex align-items-center">
+      <!-- Star rating component -->
+      <form id="ratingForm" class="star-rating" aria-label="Notation">
+        <!-- Les inputs sont dans l'ordre 5 -> 1 pour que l'effet "~ label" colore correctement -->
+
+        <input type="radio" name="rating" id="star1" value="1">
+        <label for="star1" title="1 étoile" aria-hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788 1.402 8.175L12 18.896l-7.336 3.877 1.402-8.175L.132 9.21l8.2-1.192z"/>
+          </svg>
+        </label>
+
+        <input type="radio" name="rating" id="star2" value="2">
+        <label for="star2" title="2 étoiles" aria-hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788 1.402 8.175L12 18.896l-7.336 3.877 1.402-8.175L.132 9.21l8.2-1.192z"/>
+          </svg>
+        </label> 
+
+        <input type="radio" name="rating" id="star3" value="3">
+        <label for="star3" title="3 étoiles" aria-hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788 1.402 8.175L12 18.896l-7.336 3.877 1.402-8.175L.132 9.21l8.2-1.192z"/>
+          </svg>
+        </label>
+
+        <input type="radio" name="rating" id="star4" value="4">
+        <label for="star4" title="4 étoiles" aria-hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788 1.402 8.175L12 18.896l-7.336 3.877 1.402-8.175L.132 9.21l8.2-1.192z"/>
+          </svg>
+        </label>
+
+        <input type="radio" name="rating" id="star5" value="5">
+        <label for="star5" title="5 étoiles" aria-hidden>
+          <!-- SVG étoile -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788 1.402 8.175L12 18.896l-7.336 3.877 1.402-8.175L.132 9.21l8.2-1.192z"/>
+          </svg>
+        </label>  
+
+      </form>
+
+      <!-- Affichage valeur et boutons -->
+      <div class="rating-value" id="ratingValue">—</div>
+
+      <div class="ms-auto">
+        <button id="submit" class="btn btn-sm btn-outline-primary">Soumettre</button>
+      </div>
+    </div>
+    <div class="mt-3">
+      <small class="text-muted">Cliquez sur une étoile pour noter.</small>
+      <input type="text" placeholder="Entrez un commentaire">
+    </div>
+  </div>
+</div>
+    <script src="assets/js/utilities/popper.min.js"></script> 
+    <script src="assets/js/utilities/jquery-3.7.1.min.js"></script> 
+    <script src="assets/js/bootstrap/bootstrap.js"></script>
+</body>
+</html>

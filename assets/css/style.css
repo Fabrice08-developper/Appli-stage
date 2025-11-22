@@ -1,0 +1,98 @@
+
+.container-fluid .header, .form-container {
+    background: linear-gradient( #9ad7e8, #fff);
+    padding: 20px;
+    text-align: center;
+}
+button {
+    background-color: #2163b8; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+    transform: translateY(-2px);
+}
+button:active {
+    transform: translateY(0);
+    background-color: #031c3e;
+}
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+.content{
+    border: 1px solid red;
+    height: 200px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.fade-out {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+.fade-out.hidde {
+    opacity: 0;
+}
+
+nav {
+            backdrop-filter: blur(25px);
+            background-color: none !important;
+            margin-top: 10px;
+            border-radius: 10px;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 100 !important;
+        }
+/*// X-Small devices (portrait phones, less than 576px)*/ 
+/*// No media query for `xs` since this is the default in Bootstrap*/ 
+
+/*// Small devices (landscape phones, 576px and up)*/ 
+@media (min-width: 576px) {
+    body{
+        
+    }
+  }
+
+/*// Medium devices (tablets, 768px and up)*/ 
+@media (min-width: 768px) { 
+    body{
+        
+    }
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    body{
+
+    }
+ }
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    body{
+
+    }
+ }
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+    body{
+
+    }
+ }

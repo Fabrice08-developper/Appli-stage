@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+</head>
+<style>
+    body{
+        background-image: url('images/refrigeration-7363620_1280.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        padding-top: 20px;
+    }
+    .card{
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .fa-arrow-left{
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        font-size: 24px;
+        cursor: pointer;
+        color: black;
+        width: 60px !important;
+        height: 60px !important;
+    }
+</style>
+<body>
+    <div class="container mt-4">
+        <h2>Messagerie</h2>
+        <div class="card">
+            <div class="card-header">
+                Conversation avec Le client X
+            </div>
+            <div class="card-body" style="height: 400px; overflow-y: scroll;">
+                <div class="message mb-3">
+                    <strong>Client X:</strong>
+                    <p>Bonjour, j'ai besoin d'aide avec mon appareil.</p>
+                    <small class="text-muted">10:00 AM</small>
+                </div>
+                <div class="message mb-3 text-end">
+                    <strong>Vous:</strong>
+                    <p>D'accord, pouvez vous m'en dire plus ?</p>
+                    <small class="text-muted">10:02 AM</small>
+                </div>
+            </div>
+            <div class="card-footer">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Écrire un message...">
+                        <button class="btn btn-primary" type="submit">Envoyer</button>
+                    </div>
+                </form>
+            </div>               
+        </div>
+    </div>
+</body>
+    <script src="assets/js/utilities/popper.min.js"></script> 
+    <script src="assets/js/utilities/jquery-3.7.1.min.js"></script> 
+    <script src="assets/js/bootstrap/bootstrap.js"></script>
+</html>
