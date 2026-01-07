@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
 </head>
 <style>
-     body{
-        background-image: url('images/WhatsApp\ Image\ 2025-08-22\ at\ 21.25.46_91e5e87c.jpg');
+    body{
+        background-image: url('images/refrigeration-7363620_1280.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
@@ -40,17 +41,19 @@
     }
 </style>
 <body>
+    
     <div class="container">
-        <div class="img justify-content-center">
-            <a href="essai.html" style="text-decoration: none;"><i class="fa-solid fa-arrow-left" style="color: black;"><h2>Mon profil</h2></i></a>
+        
+        <div class="img d-flex justify-content-center">
+            <a href="page2.html" style="text-decoration: none;"><i class="fa-solid fa-arrow-left" style="color: black;"><h2>Mon profil</h2></i></a>
             <img src="images/OIP-removebg-preview.png" alt="" style="width: 80px; height: auto;">
         </div>
         <div class="card">
             <div class="card-body">
-                <i class="fa-solid fa-user"></i><h5 class="card-title">Nom d'utilisateur: JohnDoe</h5>
-                <i class="fa-solid fa-envelope"></i><p class="card-text">Email:</p>
+                <i class="fa-solid fa-user"></i><h5 class="card-title">Nom d'utilisateur: <?php echo $_SESSION['nom1']; ?></h5>
+                <i class="fa-solid fa-envelope"></i><p class="card-text">Email: <?php echo $_SESSION['email1']; ?></p>
                 <i class="fa-solid fa-cake-candles"></i><p class="card-text">Date de naissance: 01/01/1990</p>
-                <p>Client</p>
+                <p>Technicien professionnel</p>
             </div>
         </div>
     </div>        

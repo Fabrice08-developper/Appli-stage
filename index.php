@@ -36,10 +36,10 @@
             <img src="images/logo-app.png" alt="">
         </div>
         <h1 class="fw-bold mb-3">ServExpert</h1>
-        <p class="mb-4">Bienvenue dans votre espace !</p>
+        <p class="mb-4">La plateforme qui répond à tous vos besoins techniques.</p>
 
-        <a href="ins.html" class="btn btn-light btn-custom">Inscription</a>
-        <a href="Login.html" class="btn btn-outline-light btn-custom">Connexion</a>
+        <a href="ins.php" class="btn btn-light btn-custom">Inscription</a>
+        <a href="Login.php" class="btn btn-outline-light btn-custom">Connexion</a>
     </div>
 
     
@@ -54,3 +54,6 @@
     <script src="assets/js/bootstrap/bootstrap.js"></script> 
 </body>
 </html>
+<?php
+    include('connexion.php');
+?>

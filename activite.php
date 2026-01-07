@@ -1,3 +1,21 @@
+<?php
+    session_start();
+    include('connexion.php');
+
+    $nom = $_SESSION['nom'];
+
+    $sl = "SELECT * FROM client WHERE NOM_CLIENT = :nom";
+    $stmt = $monPDO->prepare($sl);
+    $stmt->execute([':nom' => $nom]);
+    $client = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $sr= "SELECT NOM_DEMANDE, NOM_TECHNICIEN, NOM_SERVICE FROM demander, service, technicien 
+    WHERE demander.ID_SERVICE = service.ID_SERVICE AND service.ID_TECH = technicien.ID_TECH 
+    AND demander.ID = :id";
+    $stmt = $monPDO->prepare($sr);
+    $stmt->execute([':id' => $client['ID']]);
+    $activites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +36,7 @@
         padding-top: 10px;
         font-family: Arial, sans-serif;
         padding: 17px;
+        animation: change 10s ease-in-out infinite;
     }
     h1{
         font-size: 36px;
@@ -41,6 +60,24 @@
         margin: 20px auto;
         max-width: 400px;
     }
+            @keyframes change {
+            0%{
+                background-image: url('images/img1.jpg');
+            }
+            25%{
+                background-image: url('images/img2.jpg');
+            }
+            50%{
+                background-image: url('images/img3.jpg');
+            }
+            75%{
+                background-image: url('images/img4.jpg');
+            }
+            100%{
+                background-image: url('images/img1.jpg');
+            }
+            
+        }
 
     
 </style>
@@ -52,7 +89,7 @@
         <a class="navbar-brand" href="#">ServExpert</a>
         <img src="images/OIP-removebg-preview.png" alt="" style="width: 80px; height: auto;">
         <p>
-          Utilisateur
+          <?php echo htmlspecialchars($_SESSION['nom']) ?>
           <br><span style="color: #2163b8;">Client</span>
         </p>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,37 +99,50 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="essai.html"><i class="fa-solid fa-house"></i> Accueil</a>
+              <a class="nav-link " aria-current="page" href="essai.php"><i class="fa-solid fa-house"></i> Accueil</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profil2.html"><i class="fa-solid fa-user"></i> Profil</a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link active" href="#" style="color: #2163b8;"><i class="fa-solid fa-briefcase"></i> Mon activité</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="page1.html"><i class="fa-solid fa-magnifying-glass"></i> Recherche</a>
+              <a class="nav-link" href="page1.php"><i class="fa-solid fa-magnifying-glass"></i> Recherche</a>
             </li>
             <li class="nav-item"> 
               <a class="nav-link" href="conversation2.html"><i class="fa-solid fa-envelope"></i> Messagerie</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="ins.html"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a> 
+            
+
+            <li>
+              <div class="dropdown mb-2">
+                <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-gear"></i> Paramètres
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="Login.html"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a> </li>
+                  <li><a class="nav-link" href="profil2.php"><i class="fa-solid fa-user"></i> Profil</a></li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    
-    <div class="col-md-6 mb-3">
+    <?php if(empty($activites)): ?>
+        <h2>Aucune activité trouvée.</h2>
+    <?php else: ?>
+      <?php for($i=0; $i < count($activites); $i++): ?>
+        <div class="col-md-6 mb-3 d-flex">
             <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Installation climatisation</h5>
-                <p class="card-text">Technicien : John X<br>Date : 12 nov. 2025<br>Statut : <span class="badge bg-success">Terminée</span></p>
-                <a href="alors.html"><button class="btn btn-outline-primary btn-sm">Noter</button></a>
+                <h5 class="card-title"><?php echo htmlspecialchars($activites[$i]['NOM_DEMANDE']); ?></h5>
+                <p class="card-text">Technicien : <?php echo htmlspecialchars($activites[$i]['NOM_TECHNICIEN']); ?><br>Date : 12 nov. 2025<br>Statut : <span class="badge bg-success">Terminée</span></p>
+                <a href="star.html"><button class="btn btn-outline-primary btn-sm">Noter</button></a>
             </div>
             </div>
         </div>
+      <?php endfor; ?>
+    <?php endif; ?>
     </div>
 
    

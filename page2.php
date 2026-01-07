@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,7 @@
         background-size: cover;
         background-attachment: fixed;
         padding: 17px;
+        animation: change 10s ease-in-out infinite;
         }
         .card{
             margin: 20px auto;
@@ -22,6 +24,24 @@
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes change {
+          0%{
+            background-image: url(images/img5.jpg);
+          }
+          25%{
+            background-image: url(images/img6.jpg);
+          }
+          50%{
+            background-image: url(images/img7.jpg);
+          }
+          75%{
+            background-image: url(images/img8.jpg);
+          }
+          100%{
+            background-image: url(images/img5.jpg);
+          }
+          
         }
       
     </style>
@@ -34,7 +54,7 @@
             <a class="navbar-brand" href="#">ServExpert</a>
             <img src="images/OIP-removebg-preview.png" alt="" style="width: 80px; height: auto;">
             <p>
-            Utilisateur
+            <?php echo htmlspecialchars($_SESSION['nom1']) ?>
             <br><span style="color: #2163b8;">Technicien</span>
             </p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,21 +66,31 @@
                 <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#" style="color: #2163b8;"><i class="fa-solid fa-house"></i> Accueil</a>
                 </li>
+                
                 <li class="nav-item">
-                <a class="nav-link" href="profil.html"><i class="fa-solid fa-user"></i> Profil</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="interventions.html"><i class="fa-solid fa-briefcase"></i> Mes interventions</a>
+                <a class="nav-link" href="interventions.php"><i class="fa-solid fa-briefcase"></i> Mes interventions</a>
                 </li>
                 <li class="nav-item"> 
                 <a class="nav-link" href="conversation.html"><i class="fa-solid fa-envelope"></i> Messagerie</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" href="Login.html"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a> 
-                </li>
+                
                 <li class="nav-item">
                 <a class="nav-link" href="avis.html"><i class="fa-solid fa-circle-info"></i>Avis des clients</a>
                 </li>
+                
+                <li>
+                  <div class="dropdown mb-2">
+                    <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-gear"></i> Paramètres
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="nav-link" href="Login.html"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a> </li>
+                      <li><a class="nav-link" href="profil.php"><i class="fa-solid fa-user"></i> Profil</a></li>
+                    </ul>
+                  </div>
+                </li>
+
+
               </ul>
             </div>
           </div>
@@ -73,9 +103,9 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Salut, <span style="color: #2163b8;">Utilisateur</span></h5>
+            <h5 class="card-title">Salut, <span style="color: #2163b8;"><?php echo htmlspecialchars($_SESSION['nom1']) ?></span></h5>
             <p class="card-text">Mettez votre savoir-faire au service de ceux qui en ont besoin.</p>
-            <a href="interventions.html" class="btn btn-primary">Consulter</a>
+            <a href="interventions.php" class="btn btn-primary">Consulter</a>
         </div>
     </div>
 
