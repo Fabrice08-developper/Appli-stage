@@ -1,10 +1,46 @@
-<!doctype html>
+<?php
+  include("connexion.php");
+  session_start();
+  $nom = $_SESSION['nom'];
 
+  $note = isset($_POST['rating']) ? $_POST['rating'] : null;
+  $commentaire = isset($_POST['commentaire']) ? $_POST['commentaire'] : null;
+  $idt = isset($_GET['id']) ? $_GET['id'] : null;
+
+  $sql = "SELECT ID FROM client WHERE NOM_CLIENT = :nom";
+  $stmt = $monPDO->prepare($sql);
+  $stmt->execute([':nom' => $nom]);
+  $id_client = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  if ($note !== null && $idt !== null) {
+      $stmt = $monPDO->prepare("INSERT INTO note(ID, ID_TECH, NOTE, COMMENTAIRE) VALUES (:id, :id_tech, :note, :commentaire)");
+      $stmt->execute([
+          ':id' => $id_client['ID'],
+          ':id_tech' => $idt,
+          ':note' => $note,
+          ':commentaire' => $commentaire
+      ]);
+
+      $sql = "UPDATE demander SET STATUT = :statut WHERE ID = :idc AND ID_SERVICE = :ids";
+      $stmt=$monPDO->prepare($sql);
+      $stmt->execute([
+        ':statut' => 'noté',
+        ':idc' => $_GET['idc'],
+        ':ids' => $_GET['ids']
+      ]);
+      header("Location: activite.php");
+      exit();
+  }
+
+
+?>
+
+<!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Composant de notation par étoiles</title>
+  <title>ServXpert</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
@@ -17,6 +53,7 @@
       align-items: center;
       user-select: none;
       --star-size: 2rem;
+      flex-direction: row-reverse;
     } 
     .star-rating input { display: none; }
 
@@ -79,7 +116,7 @@
   <div class="card mt-3 p-3">
     <div class="d-flex align-items-center">
      
-      <form id="ratingForm" class="star-rating" aria-label="Notation">
+      <form id="ratingForm" class="star-rating" aria-label="Notation" method="post">
         
 
         <input type="radio" name="rating" id="star5" value="5">
@@ -111,26 +148,25 @@
         </label>
 
         <input type="radio" name="rating" id="star1" value="1">
-        <label for="star1" title="1 étoiles" aria-hidden>
-          
+        <label for="star1" title="1 étoile" aria-hidden>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
             <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.788 1.402 8.175L12 18.896l-7.336 3.877 1.402-8.175L.132 9.21l8.2-1.192z"/>
           </svg>
         </label>  
+      
+        <div class="rating-value" id="ratingValue">—</div>
+        <div class="ms-auto">
+          <button id="submit" class="btn btn-sm btn-outline-primary">Soumettre</button>
+        </div>
+        </div>
+        <div class="mt-3">
+          <small class="text-muted">Cliquez sur une étoile pour noter.</small>
+          <input type="text" name="commentaire" placeholder="Entrez un commentaire">
+        </div>
 
       </form>
 
-     
-      <div class="rating-value" id="ratingValue">—</div>
 
-      <div class="ms-auto">
-        <button id="submit" class="btn btn-sm btn-outline-primary">Soumettre</button>
-      </div>
-    </div>
-    <div class="mt-3">
-      <small class="text-muted">Cliquez sur une étoile pour noter.</small>
-      <input type="text" placeholder="Entrez un commentaire">
-    </div>
   </div>
 </div>
     <script src="assets/js/utilities/popper.min.js"></script> 

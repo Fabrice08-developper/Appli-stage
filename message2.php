@@ -2,10 +2,10 @@
 session_start();
 include('connexion.php');
 
-$sl = "SELECT * FROM technicien";
+$sl = "SELECT * FROM client";
 $stmt = $monPDO->prepare($sl);
 $stmt->execute();
-$techniciens = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$client = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -45,20 +45,20 @@ $techniciens = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     .mb-3{
         margin-top: 20px;
-        color: #2163b8;
+        color: #070707;
     }
 </style>
 <body>
-    <h4 class="mb-3">Techniciens</h4>
-    <?php if (count($techniciens) === 0): ?>
-        <p>Aucun technicien trouvé.</p>
+    <h4 class="mb-3">Clients</h4>
+    <?php if (count($client) === 0): ?>
+        <p>Aucun client trouvé.</p>
     <?php else: ?>
-        <?php for($i=0; $i < count($techniciens); $i++): ?>
+        <?php for($i=0; $i < count($client); $i++): ?>
         <div class="list-group shadow-sm">
-            <a href="conversation2.php?id=<?= $techniciens[$i]['ID_TECH'] ?>" class="list-group-item list-group-item-action">
+            <a href="conversation.php?id=<?= $client[$i]['ID'] ?>" class="list-group-item list-group-item-action">
                 <div>
-                    <h6 class="mb-0"><?= htmlspecialchars($techniciens[$i]['NOM_TECHNICIEN']) ?></h6>
-                    <small class="text-muted"><?= htmlspecialchars($techniciens[$i]['Email_tech']) ?></small>
+                    <h6 class="mb-0"><?= htmlspecialchars($client[$i]['NOM_CLIENT']) ?></h6>
+                    <small class="text-muted"><?= htmlspecialchars($client[$i]['EMAIL']) ?></small>
                 </div>
             </a>
         </div>

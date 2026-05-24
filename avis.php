@@ -1,3 +1,30 @@
+<?php
+include("connexion.php");
+session_start();
+$nom = $_SESSION['nom1'];
+
+$sql = "SELECT ID_TECH FROM technicien WHERE NOM_TECHNICIEN = :nom";
+$stmt = $monPDO->prepare($sql);
+$stmt->execute([':nom' => $nom]);
+$id_tech = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$sql1 = "SELECT NOM_CLIENT, NOTE, COMMENTAIRE FROM note, client WHERE note.ID = client.ID AND note.ID_TECH = :id_tech";
+$stmt = $monPDO->prepare($sql1);
+$stmt->execute([':id_tech' => $id_tech['ID_TECH']]);
+$avis = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$moy = 0;
+if (!empty($avis)) {
+    $sum = 0;
+    foreach ($avis as $a) {
+        $sum += $a['NOTE'];
+    }
+    $moy = $sum / count($avis);
+}
+
+$_SESSION['moy'] = $moy;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,20 +57,20 @@
     }
 
      .list-group-item {
-      transition: all 0.3s ease; /* Transition douce */
-      background-color: rgba(255, 255, 255, 0.1); /* Légère transparence */
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.1);
       color: #fff;
       border: none;
     }
 
     .list-group-item:hover {
-      background-color: #0d6efd; /* Couleur de survol */
-      transform: translateX(5px); /* Glissement léger à droite */
-      box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4); /* Effet d’ombre */
+      background-color: #0d6efd;
+      transform: translateX(5px);
+      box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4);
     }
 
     body {
-      background-color: #212529; /* Fond sombre pour contraste */
+      background-color: #212529; 
       padding: 17px;
     }
 
@@ -83,14 +110,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link" href="page2.php"><i class="fa-solid fa-house"></i> Accueil</a>
+                <a class="nav-link" href="accueil2.php"><i class="fa-solid fa-house"></i> Accueil</a>
                 </li>
                 
                 <li class="nav-item">
                 <a class="nav-link" href="interventions.php"><i class="fa-solid fa-briefcase"></i> Mes interventions</a>
                 </li>
                 <li class="nav-item"> 
-                <a class="nav-link" href="conversation.html"><i class="fa-solid fa-envelope"></i> Messagerie</a>
+                <a class="nav-link" href="message2.php"><i class="fa-solid fa-envelope"></i> Messagerie</a>
                 </li>
                 
                 <li class="nav-item">
@@ -112,28 +139,16 @@
             </div>
           </div>
         </nav>
-
+        <?php if (!empty($avis)): ?>
         <div class="list-group">
+        <?php for($i=0; $i<count($avis); $i++): ?>
         <div class="list-group-item">
-            <strong>Jean X :</strong> Très professionnel et ponctuel ! ⭐⭐⭐⭐⭐
+            <strong><?= $avis[$i]['NOM_CLIENT'] ?> :</strong> <?= $avis[$i]['COMMENTAIRE'] ?> <?= str_repeat("⭐", $avis[$i]['NOTE']) ?>
         </div>
-        <div class="list-group-item">
-            <strong>Marie Y :</strong> Bon travail mais un peu de retard. ⭐⭐⭐☆☆
+        <?php endfor; ?>
         </div>
-        <div class="list-group-item">
-            <strong>Marie Y :</strong> Bon travail mais un peu de retard. ⭐☆☆☆☆
+        <?php endif; ?>
         </div>
-        <div class="list-group-item">
-            <strong>Marie Y :</strong> Bon travail mais un peu de retard. ⭐⭐⭐⭐☆
-        </div>
-        <div class="list-group-item">
-            <strong>Paul Y :</strong> Bon travail mais un peu de retard. ⭐⭐⭐⭐☆
-        </div>
-        <div class="list-group-item">
-            <strong>Mathieu Y :</strong> Un souci sur le travail effectué. ⭐⭐☆☆☆
-        </div>
-        </div>
-    </div>
     
 </body>
     <script src="assets/js/utilities/popper.min.js"></script> 

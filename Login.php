@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ServXpert</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
@@ -103,7 +103,7 @@
                 $_SESSION['nom'] = $client['NOM_CLIENT'];
                 $_SESSION['email'] = $client['EMAIL'];
                 $_SESSION['date'] = $client['DATE_NAISSANCE'];
-                header("Location: essai.php");
+                header("Location: accueil.php");
             } else if($user['type'] === 'technicien') {
                 $_SESSION['nom1'] = $technicien['NOM_TECHNICIEN'];
                 $_SESSION['email1'] = $technicien['Email_tech'];

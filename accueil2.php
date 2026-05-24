@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ServXpert</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Faustina:ital,wght@0,300..800;1,300..800&family=Send+Flowers&display=swap');
         body{
         background-image: url('images/refrigeration-7363620_1280.jpg');
         background-repeat: no-repeat;
@@ -71,11 +72,11 @@
                 <a class="nav-link" href="interventions.php"><i class="fa-solid fa-briefcase"></i> Mes interventions</a>
                 </li>
                 <li class="nav-item"> 
-                <a class="nav-link" href="conversation.html"><i class="fa-solid fa-envelope"></i> Messagerie</a>
+                <a class="nav-link" href="message2.php"><i class="fa-solid fa-envelope"></i> Messagerie</a>
                 </li>
                 
                 <li class="nav-item">
-                <a class="nav-link" href="avis.html"><i class="fa-solid fa-circle-info"></i>Avis des clients</a>
+                <a class="nav-link" href="avis.php"><i class="fa-solid fa-circle-info"></i>Avis des clients</a>
                 </li>
                 
                 <li>
@@ -97,8 +98,8 @@
         </nav>
 
         <div class="container text-center" style="margin-top: 100px;">
-            <h1>Bienvenue sur la plateforme ServExpert</h1>
-            <p>Votre plateforme de mise en relation avec des techniciens qualifiés.</p>
+            <h1 style="color: white !important;font-family: 'Clicker Script' , cursive !important;">Bienvenue sur la plateforme ServExpert</h1>
+            <p style="color: white !important;">Votre plateforme de mise en relation avec des techniciens qualifiés.</p>
         </div>
 
         <div class="card">

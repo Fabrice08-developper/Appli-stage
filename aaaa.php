@@ -1,11 +1,25 @@
 <?php
-    include('connexion.php');
-$mp1= 'juin2009';
-$pass = PASSWORD_HASH($mp1, PASSWORD_DEFAULT);
 
-$sql = "UPDATE client SET PASS = :pass WHERE ID = :id_client";
-$stmt= $monPDO->prepare($sql);
-$stmt->execute([
-    ':pass' => $pass,
-    ':id_client' => 375
-]);
+header('Content-Type: application/json');
+
+    include('connexion.php');
+session_start();
+
+$sql="SELECT NOM_TECHNICIEN, COUNT(note.ID_TECH) AS demandes FROM technicien, note WHERE technicien.ID_TECH = note.ID_TECH
+AND technicien.ID_TECH IN (SELECT ID_TECH FROM maitriser WHERE NUMERO = :num) GROUP BY technicien.ID_TECH";
+$stmt=$monPDO->prepare($sql);
+$stmt->execute([':num' => $_GET['num']]);
+$tec=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $labels = [];
+    $counts = [];
+
+    foreach($tec as $tech){
+        $labels[] = $tech['NOM_TECHNICIEN'];
+        $counts[] = $tech['demandes'];
+    }
+
+    echo json_encode(['labels' => $labels, 'counts' => $counts]);
+
+
+?>

@@ -1,17 +1,17 @@
-<?php session_start(); ?>
+<?//php session_start(); ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+      <title>ServXpert</title>
       <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
       <link rel="stylesheet" href="assets/css/style.css">
-  </head>
+  </head> -->
   <style>
-      body{
+      /* body{
           background-image: url('images/WhatsApp\ Image\ 2025-08-22\ at\ 21.25.46_91e5e87c.jpg');
           background-repeat: no-repeat;
           background-size: cover;
@@ -49,20 +49,26 @@
                   background-image: url('images/img1.jpg');
               }
               
-          }
+          } */
 
               
   </style>
-  <body>
+  <!-- <body>
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
 
           <a class="navbar-brand" href="#">ServExpert</a>
           <img src="images/OIP-removebg-preview.png" alt="" style="width: 80px; height: auto;">
-          <p>
-            <?php echo $_SESSION['nom']; ?>
-            <br><span style="color: #2163b8;">Client</span>
+          <p> -->
+            <?php 
+              // if(isset($_SESSION['nom'])){
+              //   echo "Bonjour, " . htmlspecialchars($_SESSION['nom']);
+              // } else {
+              //   echo "Invité";
+              // }
+            ?>
+            <!-- <br><span style="color: #2163b8;">Client</span>
           </p>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -71,21 +77,34 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="essai.php"><i class="fa-solid fa-house"></i> Accueil</a>
+                <a class="nav-link" aria-current="page" href="accueil.php"><i class="fa-solid fa-house"></i> Accueil</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="activite.php"><i class="fa-solid fa-briefcase"></i> Mon activité</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" style="color: #2163b8;" href="#"><i class="fa-solid fa-magnifying-glass"></i> Recherche</a>
-              </li>
+               
               <li class="nav-item"> 
-                <a class="nav-link" href="conversation2.html"><i class="fa-solid fa-envelope"></i> Messagerie</a>
+                <a class="nav-link" href="message.php"><i class="fa-solid fa-envelope"></i> Messagerie</a>
               </li>
 
               <li>
                 <div class="dropdown mb-2">
-                  <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-gear"></i> Services
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="plomberie.php"><i class="fa-solid fa-house-flood-water"></i> Plomberie</a> </li>
+                    <li><a class="nav-link" href="mecanique.php"><i class="fa-solid fa-wrench"></i> Mecanique</a></li>
+                    <li><a class="nav-link" href="genie_civil.php"><i class="fa-solid fa-helmet-safety"></i>Genie civil</a></li>
+                    <li><a class="nav-link" href="informatique.php"><i class="fa-solid fa-computer"></i> Informatique</a></li>
+                    <li><a class="nav-link" href="electronique.php"><i class="fa-solid fa-plug-circle-bolt"></i> electronique</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="dropdown mb-2">
+                  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-gear"></i> Paramètres
                   </button>
                   <ul class="dropdown-menu">
@@ -95,11 +114,12 @@
                 </div>
               </li>
 
+
             </ul>
           </div>
         </div>
-      </nav>
-      <div class="container d-flex justify-content-end align-items-end mb-2">
+      </nav> -->
+      <!-- <div class="container d-flex justify-content-end align-items-end mb-2">
         <div class="dropdown mb-2">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Specifiez le domaine
@@ -118,39 +138,40 @@
             <button class="btn btn-primary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
         </form>
-      </div>
+      </div> -->
       <?php
-        include('connexion.php');
-        $sql = "SELECT * FROM technicien, domaine, maitriser WHERE technicien.ID_TECH = 503 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
-        $stmt = $monPDO->prepare($sql);
-        $stmt->execute();
-        $techniciens = $stmt->fetchAll();
+        // include('connexion.php');
+        // $sql = "SELECT * FROM technicien, domaine, maitriser WHERE technicien.ID_TECH = 503 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
+        // $stmt = $monPDO->prepare($sql);
+        // $stmt->execute();
+        // $techniciens = $stmt->fetchAll();
 
-        $sql2 = "SELECT * FROM technicien, domaine, maitriser WHERE technicien.ID_TECH = 167 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
-        $stmt = $monPDO->prepare($sql2);
-        $stmt->execute();
-        $techniciens3 = $stmt->fetchAll();
+        // $sql2 = "SELECT * FROM technicien, domaine, maitriser WHERE technicien.ID_TECH = 167 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
+        // $stmt = $monPDO->prepare($sql2);
+        // $stmt->execute();
+        // $techniciens3 = $stmt->fetchAll();
 
-        $sql5 = "SELECT * FROM technicien, domaine, maitriser WHERE technicien.ID_TECH = 952 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
-        $stmt = $monPDO->prepare($sql5);
-        $stmt->execute();
-        $techniciens4 = $stmt->fetchAll();
+        // $sql5 = "SELECT * FROM technicien, domaine, maitriser WHERE technicien.ID_TECH = 952 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
+        // $stmt = $monPDO->prepare($sql5);
+        // $stmt->execute();
+        // $techniciens4 = $stmt->fetchAll();
 
-        $sql4 = "SELECT * FROM maitriser, domaine, technicien WHERE technicien.ID_TECH = 20 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
-        $stmt = $monPDO->prepare($sql4);
-        $stmt->execute();
-        $techniciens2= $stmt->fetchAll();
+        // $sql4 = "SELECT * FROM maitriser, domaine, technicien WHERE technicien.ID_TECH = 20 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
+        // $stmt = $monPDO->prepare($sql4);
+        // $stmt->execute();
+        // $techniciens2= $stmt->fetchAll();
 
-        $sql3 = "SELECT * FROM maitriser, domaine, technicien WHERE technicien.ID_TECH = 506 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
-        $stmt = $monPDO->prepare($sql3);
-        $stmt->execute();
-        $domaine= $stmt->fetchAll();
+        // $sql3 = "SELECT * FROM maitriser, domaine, technicien WHERE technicien.ID_TECH = 506 AND technicien.ID_TECH = maitriser.ID_TECH AND domaine.NUMERO = maitriser.NUMERO";
+        // $stmt = $monPDO->prepare($sql3);
+        // $stmt->execute();
+        // $domaine= $stmt->fetchAll();
       ?>
       
-      <?php if(!empty($techniciens)):?>
-      <div class="cadres d-flex flex-wrap justify-content-center" style="margin-top: 40px;">
-        <?php foreach ($techniciens as $tech): ?>
-        <div class="card shadow-lg border-0 col-12" style="width: 18rem;margin-right: 40px;">
+      <?php //if(!empty($techniciens)):?>
+        
+      <!-- <div class="cadres d-flex flex-wrap justify-content-center" style="margin-top: 40px;"> -->
+        <?php //foreach ($techniciens as $tech): ?>
+        <!-- <div class="card shadow-lg border-0 col-12" style="width: 18rem;margin-right: 40px;">
           <img src="images/OIP.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-title">
@@ -159,10 +180,13 @@
               domaine: <span style="color: #2163b8;"><?= htmlspecialchars($tech['NOM_DOMAINE']) ?></span>
               <a href="dem2.php" class="btn btn-primary">Solliciter</a>
             </p>
+            <div class="link">
+              <a href="conversation2.php"><i class="fa-solid fa-envelope" style="width: 100px;height: auto;"></i></a>
+            </div>
           </div>
-        </div>
-        <?php endforeach; ?>
-        <?php foreach($domaine as $dm): ?>
+        </div> -->
+        <!-- <?php // endforeach; ?>
+        <?php //foreach($domaine as $dm): ?>
         <div class="card shadow-lg border-0 col-12" style="width: 18rem;margin-right: 40px;">
           <img src="images/OIP.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
@@ -174,9 +198,9 @@
             </p>
           </div>
         </div>
-          <?php endforeach; ?>
+          <?php //endforeach; ?>
 
-          <?php foreach($techniciens2 as $tech2):?>
+          <?php //foreach($techniciens2 as $tech2):?>
         <div class="card shadow-lg border-0 col-12" style="width: 18rem;margin-right: 40px;">
           <img src="images/OIP.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
@@ -188,8 +212,8 @@
             </p>
           </div>
         </div>
-        <?php endforeach?>
-        <?php foreach($techniciens3 as $tech3):?>    
+        <?php //endforeach?>
+        <?php //  foreach($techniciens3 as $tech3):?>    
         <div class="card shadow-lg border-0 col-12" style="width: 18rem;margin-right: 40px;">
           <img src="images/OIP.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
@@ -201,9 +225,9 @@
             </p>
           </div>
         </div>
-        <?php endforeach?>
+       <?php //endforeach?>
         
-        <?php foreach($techniciens4 as $tech4):?>
+        //<?php foreach($techniciens4 as $tech4):?>
         <div class="card shadow-lg border-0 col-12" style="width: 18rem;margin-right: 40px;">
           <img src="images/OIP.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
@@ -217,7 +241,7 @@
         </div>
         <?php endforeach?>
       </div>
-    <?php endif; ?>
+    <?//php endif; ?>
 
     </div>
       
@@ -227,4 +251,4 @@
     <script src="assets/js/bootstrap/bootstrap.js"></script>
 
 </body>
-</html>
+</html> -->

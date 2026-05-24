@@ -1,6 +1,6 @@
 <?php
     const HOST = 'localhost';
-    const DBNAME = 'base_servexpert';
+    const DBNAME = 'base_servexpert1';
     const USER = 'root';
     const PASS = '';
 

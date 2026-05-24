@@ -5,7 +5,7 @@ include('connexion.php') ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ServXpert</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
@@ -89,7 +89,7 @@ include('connexion.php') ?>
             exit();
         }
 
-        $req2 = " INSERT INTO demander(ID, ID_SERVICE, NOM_DEMANDE)
+        $req2 = "INSERT INTO demander(ID, ID_SERVICE, NOM_DEMANDE)
                 VALUES (:id, :id_service, :nom_demande)";
         $stmt2= $monPDO->prepare($req2);
         $stmt2->execute([

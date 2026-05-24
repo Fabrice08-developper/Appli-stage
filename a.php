@@ -1,21 +1,24 @@
+
+
 <?php
-
     include('connexion.php');
-    
-        session_start();
-    
+    session_start();
 
+    header('Content-Type: application/json');
 
+    $sqsl = "SELECT NOM_TECHNICIEN, COUNT(note.ID_TECH) AS demandes FROM technicien, note
+        WHERE technicien.ID_TECH = note.ID_TECH AND technicien.ID_TECH IN( SELECT ID_TECH FROM maitriser ) GROUP BY technicien.ID_tech";
+    $stmt=$monPDO->prepare($sqsl);
+    $stmt->execute();
+    $techs=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $labels = [];
+    $counts = [];
 
-        $req = " INSERT INTO service(ID_SERVICE, ID_TECH, NOM_SERVICE)
-                VALUES (:id, :id_tech, :nom)";
-        $stmt= $monPDO->prepare($req);
-        $stmt->execute([
-            ':id' => rand(1, 1000),
-            ':id_tech' => 506,
-            ':nom' => 'Gestion des parc informatique'
-        ]); 
-        
-        
+    foreach($techs as $tech){
+        $labels[] = $tech['NOM_TECHNICIEN'];
+        $counts[] = $tech['demandes'];
+    }
+
+    echo json_encode(['labels' => $labels, 'counts' => $counts]);
 ?>
